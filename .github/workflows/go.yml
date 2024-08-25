@@ -1,0 +1,79 @@
+1.2.3.38/31          # Nagoya, Japan
+2.3.4.22             # Brussels, Belgium1.2.3.38/31<agent>
+  <agentId>24695</agentId>
+  <agentName>Nagoya, Japan</agentName>
+  <agentType>Cloud</agentType>
+  <location>Aichi, Japan</location>
+  <countryId>JP</countryId>
+  <ipv4Address>1.2.3.37</ipv4Address>
+  <ipv4Address>1.2.3.38</ipv4Address>
+  <ipv4Address>1.2.3.39</ipv4Address>
+  <ipv4SubnetStrict>1.2.3.37</ipv4SubnetStrict>
+  <ipv4SubnetStrict>1.2.3.38/31</ipv4SubnetStrict>
+  <ipv4SubnetLoose>1.2.3.36/30</ipv4SubnetLoose>
+  <ipv4RangeStrict>1.2.3.37 - 1.2.3.39</ipv4RangeStrict>
+  <ipv4RangeLoose>1.2.3.37 - 1.2.3.39</ipv4RangeLoose>
+  <ipv4BlockStrict>1.2.3.[37-39]</ipv4BlockStrict>
+  <ipv4BlockLoose>1.2.3.[37-39]</ipv4BlockLoose>
+</agent>2.3.4.22246951.2.3.381.2.3.371.2.3.36/301.2.3.39Agent ID,Agent Name,Agent Type,Location,Country,IPv4 Addresses,IPv4 Subnets (Strict),IPv4 Subnets (Loose),IPv4 Ranges (Strict),IPv4 Ranges (Loose),IPv4 Blocks (Strict),IPv4 Blocks (Loose),IPv6 Addresses,IPv6 Subnets (Strict),IPv6 Subnets (Loose),IPv6 Ranges (Strict),IPv6 Ranges (Loose),IPv6 Blocks (Strict),IPv6 Blocks (Loose)
+24695,"Nagoya, Japan",Cloud,"Aichi, Japan",JP,"1.2.3.37","1.2.3.38","1.2.3.39","1.2.3.37","1.2.3.38/31","1.2.3.36/30","1.2.3.37 - 1.2.3.39","1.2.3.37 - 1.2.3.39","1.2.3.[37-39]","1.2.3.[37-39]","","","","","","",""[
+{
+  "agentId": 24695,
+  "agentName": "Nagoya, Japan",
+  "agentType": "Cloud",
+  "location": "Aichi, Japan",
+  "countryId": "JP",
+  "ipv4Address": [
+    "1.2.3.37",
+    "1.2.3.38",
+    "1.2.3.39"
+  ],
+  "ipv4SubnetStrict": [
+    "1.2.3.37",
+    "1.2.3.38/31"
+  ],
+  "ipv4SubnetLoose": [
+    "1.2.3.36/30"
+  ],
+  "ipv4RangeStrict": [
+    "1.2.3.37 - 1.2.3.39"
+  ],
+  "ipv4RangeLoose": [
+    "1.2.3.37 - 1.2.3.39"
+  ],
+  "ipv4BlockStrict": [
+    "1.2.3.[37-39]"
+  ],
+  "ipv4BlockLoose": [
+    "1.2.3.[37-39]"
+  ]
+}
+]10.0.0.[1-10]
+10.0.[1-2].20# This workflow will build a golang project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-go
+
+name: Go
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Go
+      uses: actions/setup-go@v4
+      with:
+        go-version: '1.20'
+
+    - name: Build
+      run: go build -v ./...
+
+    - name: Test
+      run: go test -v ./...
